@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="tea-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E5B4B"/>
+      <stop offset="100%" style="stop-color:#8F9779"/>
+    </linearGradient>
+  </defs>
+  <!-- 茶杯主体 -->
+  <ellipse cx="32" cy="48" rx="12" ry="5" fill="#D9B396" opacity="0.5"/>
+  <path d="M20 26 L20 44 Q20 52 32 52 Q44 52 44 44 L44 26 Z" fill="url(#tea-grad)"/>
+  <!-- 杯内茶水 -->
+  <ellipse cx="32" cy="26" rx="12" ry="5" fill="#8F9779" opacity="0.4"/>
+  <!-- 杯把手 -->
+  <path d="M44 30 Q54 30 54 38 Q54 46 44 44" fill="none" stroke="url(#tea-grad)" stroke-width="3" stroke-linecap="round"/>
+  <!-- 热气 -->
+  <path d="M27 22 Q25 14 27 6" fill="none" stroke="#8F9779" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M32 20 Q30 12 32 4" fill="none" stroke="#8F9779" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M37 22 Q39 14 37 6" fill="none" stroke="#8F9779" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

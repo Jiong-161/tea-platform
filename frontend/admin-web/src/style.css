@@ -1,0 +1,101 @@
+/* ============================================================
+ *   茶文·雅集 — 后台管理端全局样式
+ *   配色延续新中式茶文化，增加管理后台的稳重感
+ * ============================================================ */
+
+:root {
+  /* 品牌色 */
+  --tea-primary: #2E5B4B;
+  --tea-primary-hover: #3D7A65;
+  --tea-primary-light: #E8F0ED;
+  --tea-primary-dark: #1E3D32;
+  --tea-secondary: #8F9779;
+  --tea-accent: #D9B396;
+  --tea-accent-light: #F5EDE4;
+  --tea-bg: #F5F6F2;
+  --tea-white: #FFFFFF;
+  --tea-border: #E5E7E0;
+  --tea-shadow: 0 2px 12px rgba(46, 91, 75, 0.06);
+
+  /* 文字 */
+  --text-primary: #2C3E2D;
+  --text-regular: #5A6B5E;
+  --text-secondary: #8F9779;
+
+  /* 侧边栏 */
+  --sidebar-width: 220px;
+  --sidebar-bg: #1E3D32;
+  --sidebar-text: rgba(255,255,255,0.7);
+  --sidebar-active: rgba(255,255,255,0.12);
+
+  /* 圆角 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* 间距 */
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 28px;
+
+  /* 过渡 */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  --font-sans: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-serif: 'Noto Serif SC', 'STSong', Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-regular);
+  background: var(--tea-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--tea-primary); text-decoration: none; }
+a:hover { color: var(--tea-primary-hover); }
+
+h1, h2, h3 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 600; }
+
+/* ---- Element Plus 全局覆盖 ---- */
+.el-button--primary {
+  --el-button-bg-color: var(--tea-primary);
+  --el-button-border-color: var(--tea-primary);
+  --el-button-hover-bg-color: var(--tea-primary-hover);
+  --el-button-hover-border-color: var(--tea-primary-hover);
+}
+.el-card {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--tea-border) !important;
+  box-shadow: var(--tea-shadow) !important;
+}
+.el-menu { border-right: none !important; }
+.el-table th.el-table__cell {
+  background: var(--tea-primary-light) !important;
+  color: var(--tea-primary) !important;
+  font-weight: 600;
+}
+.el-dialog { border-radius: var(--radius-lg) !important; }
+.el-pagination .el-pager li.is-active { background-color: var(--tea-primary); }
+
+/* ---- 工具类 ---- */
+.page-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: var(--space-md); gap: var(--space-sm); flex-wrap: wrap;
+}
+.loading-container {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 200px; flex-direction: column; gap: 8px; color: var(--text-secondary);
+}
+.empty-container {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 200px; color: var(--text-secondary); gap: 12px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--tea-bg); }
+::-webkit-scrollbar-thumb { background: var(--tea-border); border-radius: 3px; }
