@@ -26,7 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-//http://localhost:20001/user/list
+/**
+ * 用户管理接口
+ * 提供用户登录、注册、密码修改、查询等功能
+ */
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -35,11 +38,18 @@ public class UserController {
     private final UserMapper userMapper;
     private final StringRedisTemplate redisTemplate;
 
+    /**
+     * 服务健康检查接口
+     */
     @GetMapping("/user/test")
     public Result<String> test() {
         return Result.success("user-service success");
     }
 
+    /**
+     * 用户列表（分页）
+     * 仅管理员可访问，返回用户列表并脱敏密码字段
+     */
     @GetMapping("/user/list")
     public Result<List<User>> list(
             @RequestParam(defaultValue = "1") int page,
@@ -173,6 +183,10 @@ public class UserController {
         }
         return Result.success(token);
     }
+    /**
+     * 获取当前登录用户信息
+     * 从网关注入的请求头获取用户ID，返回用户详情并脱敏密码字段
+     */
     @GetMapping("/user/current")
     public Result<User> current(HttpServletRequest request) {
 
@@ -229,6 +243,10 @@ public class UserController {
 
         return Result.success("注册成功");
     }
+    /**
+     * 用户退出登录
+     * 清除Redis中的Token，使当前登录状态失效
+     */
     @PostMapping("/user/logout")
     public Result<String> logout(HttpServletRequest request) {
 
