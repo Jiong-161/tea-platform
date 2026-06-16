@@ -45,6 +45,7 @@ public class AddressController {
         if (dto.getIsDefault() != null && dto.getIsDefault() == 1) {
             clearDefault(userId);
         }
+        // 新增地址时，默认设为非默认地址
 
         Address address = new Address();
         address.setUserId(userId);
