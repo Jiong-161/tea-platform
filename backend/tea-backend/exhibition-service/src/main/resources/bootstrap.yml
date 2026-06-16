@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: exhibition-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

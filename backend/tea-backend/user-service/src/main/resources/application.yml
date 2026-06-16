@@ -1,0 +1,25 @@
+server:
+  port: 20001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tea_platform?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# ========== Sentinel 流量控制与熔断降级配置 ==========
+
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8089
+        port: 8720
+      eager: true
+      log:
+        dir: ./logs/sentinel

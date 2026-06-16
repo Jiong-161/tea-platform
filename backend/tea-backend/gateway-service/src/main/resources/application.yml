@@ -1,0 +1,71 @@
+
+server:
+  port: 10010
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        - id: admin-user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/admin/user/**
+        - id: content-service
+          uri: lb://content-service
+          predicates:
+            - Path=/content/**
+        - id: admin-content-service
+          uri: lb://content-service
+          predicates:
+            - Path=/admin/content/**
+        - id: exhibition-service
+          uri: lb://exhibition-service
+          predicates:
+            - Path=/exhibition/**
+        - id: admin-exhibition-service
+          uri: lb://exhibition-service
+          predicates:
+            - Path=/admin/exhibition/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/product/**
+        - id: admin-product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/admin/product,/admin/product/**,/admin/order/**
+
+
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            maxAge: 3600
+    sentinel:
+      transport:
+              dashboard: localhost:8089
+              port: 8719
+              eager: true
+            # 网关模式降级配置：被限流时返回JSON而非默认HTML页面
+      scg:
+              fallback:
+                mode: response
+                response-status: 429
+                response-body: '{"code":429,"message":"请求过于频繁，请稍后再试","data":null}'
+            # 日志输出目录（默认为用户目录下的logs/csp/）
+      log:
+              dir: ./logs/sentinel
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# ========== Sentinel 流量控制与熔断降级配置 ==========
+# Sentinel Dashboard: http://localhost:8089 (默认账号 sentinel/sentinel)

@@ -1,0 +1,31 @@
+server:
+  port: 20004
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tea_platform?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  # 新增文件上传大小限制 解决1MB报错
+  servlet:
+    multipart:
+      # 单个文件最大 10MB
+      max-file-size: 10MB
+      # 整个请求最大 10MB
+      max-request-size: 10MB
+  cloud:
+    sentinel:
+          transport:
+            dashboard: localhost:8089
+            port: 8721
+          eager: true
+          log:
+            dir: ./logs/sentinel
+
+minio:
+  endpoint: http://localhost:9000
+  access-key: admin
+  secret-key: 12345678
+  bucket-name: tea-platform
+
+# ========== Sentinel 流量控制与熔断降级配置 ==========
