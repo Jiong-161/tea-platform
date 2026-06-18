@@ -15,7 +15,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('@/views/Home.vue'),
-    meta: { title: '首页 — 茶文化交流平台' }
+    meta: { title: '茶文化展览购销服务系统' }
   },
   {
     path: '/login',

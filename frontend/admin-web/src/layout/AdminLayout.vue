@@ -8,7 +8,7 @@
       <div class="sidebar-brand">
         <span class="brand-icon">🍵</span>
         <div>
-          <div class="brand-title">茶文·雅集</div>
+          <div class="brand-title">茶文化展览购销服务系统</div>
           <div class="brand-sub">管理后台</div>
         </div>
       </div>

@@ -4,7 +4,7 @@
     <div class="login-card">
       <div class="login-header">
         <span class="login-icon">🍵</span>
-        <h1>茶文·雅集</h1>
+        <h1>茶文化展览购销服务系统</h1>
         <p>管理后台</p>
       </div>
       <el-form ref="formRef" :model="form" :rules="rules" size="large" @submit.prevent="handleLogin">

@@ -11,13 +11,13 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login.vue'),
-    meta: { title: '管理员登录 — 茶文·雅集' }
+    meta: { title: '管理员登录 — 茶文化' }
   },
   {
     path: '/',
     name: 'Dashboard',
     component: () => import('@/views/Dashboard.vue'),
-    meta: { title: '仪表盘 — 管理后台', requiresAdmin: true }
+    meta: { title: '茶文化展览购销服务系统 — 管理后台', requiresAdmin: true }
   },
   {
     path: '/users',
