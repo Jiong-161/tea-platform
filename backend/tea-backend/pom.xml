@@ -27,6 +27,9 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
 
         <spring.boot.version>3.3.4</spring.boot.version>
 
@@ -108,20 +111,19 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!-- [修复] 显式指定 maven-compiler-plugin 版本，适配 Java 17 -->
+                <!-- maven-compiler-plugin: 指定 JDK 17，支持 Type Patterns (JEP 394) 等 Java 17 特性 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.12.1</version>
                     <configuration>
-                        <!-- [修复] 显式绑定 source/target 为 ${java.version}，解决不继承
-                             spring-boot-starter-parent 时编译级别回退到低版本的问题 -->
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                        <!-- [修复] 统一编码配置，与 project.build.sourceEncoding 保持一致 -->
+                        <!-- release=17 等价于 -source 17 -target 17，并自动匹配正确的 bootclasspath -->
+                        <release>${java.version}</release>
+                        <!-- 统一编码，与 project.build.sourceEncoding 保持一致 -->
                         <encoding>${project.build.sourceEncoding}</encoding>
-                        <!-- 保留原有参数：方法参数名称保留到字节码，供 Spring 依赖注入反射使用 -->
+                        <!-- 保留方法参数名称到字节码，供 Spring 依赖注入反射使用 -->
                         <parameters>true</parameters>
+
                     </configuration>
                 </plugin>
             </plugins>
